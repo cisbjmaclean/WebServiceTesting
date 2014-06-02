@@ -1,8 +1,7 @@
 package test;
 
-
-import info.hccis.bjmac.TestWebService;
-import info.hccis.bjmac.TestWebService_Service;
+import web.services.StudentInformation;
+import web.services.StudentInformation_Service;
 
 public class TestWS2CallingClass {
 
@@ -12,14 +11,16 @@ public class TestWS2CallingClass {
     public static void main(String[] args) {
        //call the web service
         
-        System.out.println(hello("test225"));
+        System.out.println(get("test1027"));
     }
 
-    public static String hello(java.lang.String name) {
-        TestWebService_Service service = new TestWebService_Service();
-        TestWebService testWebService = service.getTestWebServicePort();
-        return testWebService.hello(name);
+    public static String get(java.lang.String studentId) {
+        StudentInformation_Service service = new StudentInformation_Service();
+        StudentInformation testWebService = service.getStudentInformationPort();
+        return testWebService.get(studentId);
     }
 
+    
+    
     
 }

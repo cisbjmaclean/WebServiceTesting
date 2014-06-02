@@ -42,5 +42,37 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/info/hccis/bjmac"/>
         <delete dir="${build.generated.dir}/jax-wsCache/TestWebService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-TestWebService"/>
+    <target name="wsimport-client-StudentInformation" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/StudentInformation"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/StudentInformation" destdir="${build.generated.dir}/jax-wsCache/StudentInformation" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/StudentInformation/wsdl/localhost_8080/StudentWeb/StudentInformation.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/StudentWeb/StudentInformation?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/StudentInformation/wsdl/localhost_8080/StudentWeb/StudentInformation.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/StudentInformation"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/StudentInformation">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-StudentInformation" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/services"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/StudentInformation"/>
+    </target>
+    <target name="wsimport-client-StudentInformation_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/StudentInformation_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/StudentInformation_1" destdir="${build.generated.dir}/jax-wsCache/StudentInformation_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/StudentInformation_1/wsdl/bjmac.hccis.info_8080/StudentWeb_2.0/StudentInformation.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://bjmac.hccis.info:8080/StudentWeb_2.0/StudentInformation?WSDL" xnocompile="true" xendorsed="true" package="web.services">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/StudentInformation_1/wsdl/bjmac.hccis.info_8080/StudentWeb_2.0/StudentInformation.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/StudentInformation_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/StudentInformation_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-StudentInformation_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/web/services"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/StudentInformation_1"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-TestWebService, wsimport-client-StudentInformation, wsimport-client-StudentInformation_1"/>
 </project>

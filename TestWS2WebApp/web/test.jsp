@@ -1,3 +1,1 @@
-
-
-<%= test.TestWS2CallingClass.hello("test243") %>
+<%= test.TestWS2CallingClass.get("test1028") %>
